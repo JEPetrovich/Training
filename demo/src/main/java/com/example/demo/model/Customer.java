@@ -1,40 +1,33 @@
 package com.example.demo.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Getter @Setter
+@NoArgsConstructor
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String name;
+    @Column
     private String lastName;
-    private LocalDate dateOfBirth;
+    @JsonFormat(pattern = "yyyy-MM-dd' 'HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd' 'HH:mm:ss")
+    @Column
+    private LocalDateTime dateOfBirth;
+    @Column
     private String mail;
-
-    public Customer() { }
-
-    public Long getId() { return id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-
-    public LocalDate getDateOfBirth() { return dateOfBirth; }
-    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
-
-    public String getMail() { return mail; }
-    public void setMail(String mail) { this.mail = mail; }
-
 
 }
 

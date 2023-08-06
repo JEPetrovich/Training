@@ -1,18 +1,19 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Customer;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public interface CustomerService {
 
-    Customer add(Customer customer);
+    void add(Customer customer);
 
-    Customer update(Customer customer);
+    void update(Customer customer);
 
     Customer detail(Long id);
 
     void delete(Long id);
 
-    List<Customer> list();
+    Page<Customer> list(PageRequest pageRequest);
 
 }
